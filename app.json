@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/profile.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.sparshlohana.myvid"
     },
     "web": {
       "bundler": "metro",
