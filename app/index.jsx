@@ -1,11 +1,17 @@
+import { useGlobalContext } from '@/context/GlobalProvider';
+import { Redirect, router } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import { Image, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { images } from '../constants';
 import CustomButton from '../components/CustomButton';
-import { StatusBar } from 'expo-status-bar';
-import { router } from 'expo-router';
+import { images } from '../constants';
 
 export default function TabLayout() {
+  const { isLoading, isLoggedIn } = useGlobalContext();
+
+  if (!isLoading && isLoggedIn) {
+    return <Redirect href={"/home"} />
+  }
 
   return (
     <SafeAreaView className="bg-primary h-full">
