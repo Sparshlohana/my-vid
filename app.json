@@ -28,7 +28,13 @@
       "favicon": "./assets/images/thumbnail.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Allow myvid to access your microphone."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
