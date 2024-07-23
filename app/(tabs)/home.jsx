@@ -29,7 +29,6 @@ const Home = () => {
                 data={posts}
                 keyExtractor={(item) => item.$id}
                 renderItem={({ item }) => (
-                    console.log(item),
                     <VideoCard video={item} />
                 )}
                 ListHeaderComponent={() => (
