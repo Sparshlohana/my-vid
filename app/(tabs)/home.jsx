@@ -8,11 +8,13 @@ import Empty from '../../components/Empty'
 import { getAllPosts, getLatestPosts } from '../../lib/appwrite'
 import useAppwrite from '../../lib/useAppwrite'
 import VideoCard from '../../components/VideoCard'
+import { useGlobalContext } from '../../context/GlobalProvider'
 
 const Home = () => {
     const { data: posts, reFetch } = useAppwrite(getAllPosts)
     const { data: latestPosts } = useAppwrite(getLatestPosts)
     const [refresh, setRefresh] = useState(false)
+    const { user, setUser, setIsLoggedIn } = useGlobalContext();
 
     const onRefresh = async () => {
         setRefresh(true);
@@ -27,6 +29,7 @@ const Home = () => {
                 data={posts}
                 keyExtractor={(item) => item.$id}
                 renderItem={({ item }) => (
+                    console.log(item),
                     <VideoCard video={item} />
                 )}
                 ListHeaderComponent={() => (
@@ -35,7 +38,7 @@ const Home = () => {
                             <View className="justify-between items-start flex-row mb-6">
                                 <View>
                                     <Text className="font-pmedium text-sm text-gray-100">Welcome Back</Text>
-                                    <Text className="text-2xl text-white font-psemibold">Sparsh Lohana</Text>
+                                    <Text className="text-2xl text-white font-psemibold">{user?.username}</Text>
                                 </View>
                                 <View>
                                     <Image source={images.logoSmall} className="w-9 h-10" resizeMode='contain' />
